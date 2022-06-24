@@ -1,0 +1,49 @@
+{% extends '_base.html' %}
+
+{% block title %}Search{% endblock title %}
+
+{% block content %}
+    <section class="jumbotron text-center" id="report_list">
+        <div class="container">
+            <h1 class="text-white">已提交报告</h1>
+            <p class="lead text-light">欢迎大家踊跃提交！</p>
+        <p>
+            <a href="#" class="btn btn-primary my-2" one-link-mark="yes">提交报告</a>
+            <a href="#" class="btn btn-secondary my-2" one-link-mark="yes">我的报告</a>
+        </p>
+        </div>
+    </section>
+    <form action="{% url 'search_results' %}" autocomplete="off" class="form-horizontal" method="get" accept-charset="utf-8">
+        <div class="input-group">
+            <input name="q" value="" class="form-control" type="text" placeholder="在这里输入关键字" aria-label="Search">
+            <span class="input-group-btn">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
+            </span>
+        </div>
+    </form>
+    <br/>
+
+    {% if report_list %}
+        {% for report in report_list %}
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="{{ report.get_absolute_url }}">
+                                {{ report.title }}
+                                </a>
+                            </h5>
+                            <p class="card-text">{{ report.abstract }}</p>
+                            <p class="card-text"><small class="text-muted">{{ report.reporter }}</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div>
+            <p class="lead text-muted">这里空空如也呢……</p>
+        </div>
+    {% endif %}
+{% endblock content %}

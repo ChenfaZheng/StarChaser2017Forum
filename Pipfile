@@ -13,6 +13,7 @@ pillow = "*"
 django-debug-toolbar = "*"
 whitenoise = "*"
 gunicorn = "*"
+django-guardian = "*"
 
 [dev-packages]
 

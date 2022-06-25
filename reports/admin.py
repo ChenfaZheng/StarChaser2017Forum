@@ -13,7 +13,6 @@ class ReportAdmin(admin.ModelAdmin):
     list_display = (
         "title", 
         "reporter", 
-        "uploader", 
         "note", 
     )
 

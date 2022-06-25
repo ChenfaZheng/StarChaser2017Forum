@@ -25,6 +25,7 @@ class ReportCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     ]
     template_name = 'reports/report_create.html'
     login_url = 'account_login'
+    permission_required = 'reports.is_starchaser2017'
 
 
 class ReportDetailView(
@@ -36,36 +37,36 @@ class ReportDetailView(
     context_object_name = 'report'
     template_name = 'reports/report_detail.html'
     login_url = 'account_login'
-    permission_required = 'reports.special_status'
+    permission_required = 'reports.is_starchaser2017'
 
 
-class ReportUpdateView(
-        LoginRequiredMixin,
-        PermissionRequiredMixin,
-        UpdateView,
-    ):
-    model = Report
-    fields = [
-        'title',
-        'abstract',
-        'reporter',
-        'note',
-    ]
-    template_name = 'reports/report_update.html'
-    login_url = 'account_login'
-    permission_required = 'reports.special_status'
+# class ReportUpdateView(
+#         LoginRequiredMixin,
+#         PermissionRequiredMixin,
+#         UpdateView,
+#     ):
+#     model = Report
+#     fields = [
+#         'title',
+#         'abstract',
+#         'reporter',
+#         'note',
+#     ]
+#     template_name = 'reports/report_update.html'
+#     login_url = 'account_login'
+#     permission_required = 'reports.is_starchaser2017'
 
 
-class ReportDeleteView(
-        LoginRequiredMixin,
-        PermissionRequiredMixin,
-        DeleteView,
-    ):
-    model = Report
-    template_name = 'reports/report_delete.html'
-    login_url = 'account_login'
-    permission_required = 'reports.special_status'
-    success_url = reverse_lazy('report_list')
+# class ReportDeleteView(
+#         LoginRequiredMixin,
+#         PermissionRequiredMixin,
+#         DeleteView,
+#     ):
+#     model = Report
+#     template_name = 'reports/report_delete.html'
+#     login_url = 'account_login'
+#     permission_required = 'reports.is_starchaser2017'
+#     success_url = reverse_lazy('report_list')
 
 
 class SearchResultsListView(ListView):
@@ -78,5 +79,6 @@ class SearchResultsListView(ListView):
         return Report.objects.filter(
             Q(title__icontains=query) | 
             Q(reporter__icontains=query) |
-            Q(abstract__icontains=query)
+            Q(abstract__icontains=query) | 
+            Q(note__icontains=query)
         )

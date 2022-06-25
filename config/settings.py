@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env("DJANGO_SECRET_KEY")
+SECRET_KEY = env("DJANGO_SECRET_KEY", default='django-insecure-v_wvm&*!f+zmxw#-tt^y9@#=i4cdjqw(hnvo83b5zu_*ln#haq')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DJANGO_DEBUG", default=False)
@@ -191,14 +191,14 @@ AUTHENTICATION_BACKENDS = (
     'guardian.backends.ObjectPermissionBackend',
 )
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-if 'EMAIL_HOST_USER' in env:
+try:
     EMAIL_HOST_USER = env('EMAIL_HOST_USER')
     EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
     EMAIL_HOST = env('EMAIL_HOST')
     EMAIL_PORT = env('EMAIL_PORT')
     EMAIL_USE_TLS = env('EMAIL_USE_TLS')
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-else:
+except:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 ACCOUNT_SESSION_REMEMBER = True

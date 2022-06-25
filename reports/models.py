@@ -29,22 +29,22 @@ class Report(models.Model):
         return reverse("report_detail", args=[str(self.id)])
     
 
-class Review(models.Model):
-    report = models.ForeignKey(
-        Report, 
-        on_delete=models.CASCADE, 
-        related_name='reviews', 
-    )
-    review = models.CharField(max_length=1000)
-    date = models.DateTimeField(auto_now_add=True)
-    author = models.ForeignKey(
-        get_user_model(), 
-        on_delete=models.CASCADE, 
-    )
+# class Review(models.Model):
+#     report = models.ForeignKey(
+#         Report, 
+#         on_delete=models.CASCADE, 
+#         related_name='reviews', 
+#     )
+#     review = models.CharField(max_length=1000)
+#     date = models.DateTimeField(auto_now_add=True)
+#     author = models.ForeignKey(
+#         get_user_model(), 
+#         on_delete=models.CASCADE, 
+#     )
 
-    def __str__(self):
-        return self.review
+#     def __str__(self):
+#         return self.review
 
-    def get_absolute_url(self):
-        return reverse("report_detail", args=[str(self.report.id)])
+#     def get_absolute_url(self):
+#         return reverse("report_detail", args=[str(self.report.id)])
     

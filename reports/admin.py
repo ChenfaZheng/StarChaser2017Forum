@@ -1,15 +1,15 @@
 from django.contrib import admin
-from .models import Report, Review
+from .models import Report
 
 
-class ReviewInline(admin.TabularInline):
-    model = Review
+# class ReviewInline(admin.TabularInline):
+#     model = Review
 
 
 class ReportAdmin(admin.ModelAdmin):
-    inlines = [
-        ReviewInline, 
-    ]
+    # inlines = [
+    #     ReviewInline, 
+    # ]
     list_display = (
         "title", 
         "reporter", 

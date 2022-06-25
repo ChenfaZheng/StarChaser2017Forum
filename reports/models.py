@@ -18,6 +18,7 @@ class Report(models.Model):
     uploader = models.ForeignKey(
         get_user_model(),
         on_delete=models.CASCADE,
+        null=True,
     )
 
 

@@ -26,6 +26,10 @@ class ReportCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     template_name = 'reports/report_create.html'
     login_url = 'account_login'
     permission_required = 'reports.is_starchaser2017'
+    
+    # redirect to the detail view of the newly created report
+    def get_success_url(self):
+        return reverse_lazy('report_detail', args=[self.object.id])
 
 
 class ReportDetailView(

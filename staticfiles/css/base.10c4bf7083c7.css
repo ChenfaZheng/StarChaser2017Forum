@@ -1,0 +1,26 @@
+/* h1 {
+    color: red;
+} */
+
+.biglogo {
+    height: 300px;
+    width: auto;
+}
+
+.jumbotron#home {
+    background-image: url("../images/biglogo.fb10eb9c5ec2.png");
+    background-size: cover;
+}
+
+.jumbotron#report_list {
+    background-image: url("../images/moon-star.17873aa20a21.png");
+    background-size: cover;
+}
+
+p#homecontent {
+    -webkit-text-stroke: 0.005em navy;
+}
+
+h1#hometitle {
+    -webkit-text-stroke: 0.005em navy;
+}

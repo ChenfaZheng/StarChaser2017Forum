@@ -2,7 +2,6 @@ import uuid
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.urls import reverse
-from django.contrib.auth.models import User
 
 
 class Report(models.Model):
@@ -16,6 +15,11 @@ class Report(models.Model):
     abstract = models.CharField(max_length=2000)
     note = models.CharField(max_length=500)
     date = models.DateTimeField(auto_now_add=True)
+    uploader = models.ForeignKey(
+        get_user_model(),
+        on_delete=models.CASCADE,
+    )
+
 
     class Meta:
         permissions = [

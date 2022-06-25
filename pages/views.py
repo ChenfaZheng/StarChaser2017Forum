@@ -11,3 +11,7 @@ class AboutPageView(TemplateView):
 
 # class CoverPageView(TemplateView):
 #     template_name = 'cover.html'
+
+
+class SchedulePageView(TemplateView):
+    template_name = 'schedule.html'

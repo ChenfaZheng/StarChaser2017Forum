@@ -19,6 +19,7 @@ class Report(models.Model):
         get_user_model(),
         on_delete=models.CASCADE,
         null=True,
+        default=None,
     )
 
 

@@ -6,7 +6,7 @@ ENV PYTHONBUFFERED 1
 WORKDIR /code
 
 COPY Pipfile Pipfile.lock /code/
-RUN pip install pipenv -i https://pypi.tuna.tsinghua.edu.cn/simple
-RUN pipenv install --system --pypi-mirror https://pypi.tuna.tsinghua.edu.cn/simple
+RUN pip install pipenv
+RUN pipenv install --system
 
 COPY . /code/

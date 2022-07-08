@@ -24,7 +24,3 @@ p#homecontent {
 h1#hometitle {
     -webkit-text-stroke: 0.005em navy;
 }
-
-.table td {
-    text-align: center;
-}
